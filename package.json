@@ -10,7 +10,10 @@
   },
   "dependencies": {
     "bootstrap-icons": "^1.11.1",
-    "vue": "^3.3.4"
+    "flowbite": "^2.2.0",
+    "flowbite-vue": "^0.1.0",
+    "vue": "^3.3.4",
+    "vue-auto-complete-textarea": "^0.1.71"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.3",
