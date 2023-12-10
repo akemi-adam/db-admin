@@ -1,5 +1,8 @@
 <script setup lang="ts">
     import { defineProps, defineEmits } from 'vue'
+    import { useSound } from '@vueuse/sound'
+    
+    import executionSoundEffect from '../assets/execution-effect.mp3'
     import SettingsIcon from './SettingsIcon.vue'
     import FileExportIcon from './FileExportIcon.vue'
     import PlayIcon from './PlayIcon.vue'
@@ -12,7 +15,7 @@
         'updateResult'
     ])
 
-    // const result = ref([])
+    const { play } = useSound(executionSoundEffect)
 
     async function execStatements(statements: string) {
         if (!Boolean(statements)) {
@@ -41,10 +44,9 @@
             body: JSON.stringify(body)
         })
 
-        emit('updateResult', await response.json())
-        // result.value = await response.json()
+        play()
 
-        // console.log(result.value) 
+        emit('updateResult', await response.json())
     }
 </script>
 

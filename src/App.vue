@@ -18,11 +18,15 @@
 
             const setStatements = (newValue: string) => statements.value = newValue
 
-            const setResult = (newValue) => result.value = newValue
+            const setResult = (newValue) => {
+                result.value = newValue
+            }
 
             watch(result, async (newValue, oldValue) => {
                 databases.value = await getDatabases()
             })
+
+            console.log(result.value);
 
             onMounted(async () => databases.value = await getDatabases())
 
@@ -40,7 +44,7 @@
         <side-bar class="col-span-2" :databases="databases"/>
         <div class="flex flex-col gap-y-2 col-span-8">
            <option-bar :statements="statements.value" @updateResult="setResult"/>
-           <playground-area @updateStatements="setStatements" />
+           <playground-area @updateStatements="setStatements" :result="result" />
         </div>
     </div>
 </template>
