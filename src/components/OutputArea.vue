@@ -31,24 +31,6 @@ export default {
 }
 </script>
 
-<style scoped>
-  ::webkit-scrollbar {
-    width: 12px;
-  }
-
-  ::webkit-scrollbar-track {
-    background-color: #f1f1f1;
-  }
-
-  ::webkit-scrollbar-thumb {
-    background-color: #888;
-  }
-
-  ::webkit-scrollbar-thumb:hover {
-    background: #555;
-  }
-</style>
-
 <template>
 <div class="overflow-x-auto overflow-y-auto max-w-full max-h-48 bg-green-100 rounded" :class="{'h-auto': showResult, 'h-24': !showResult}">
     <table class="min-w-full" v-if="showResult">
@@ -68,8 +50,37 @@ export default {
             </tr>
         </tbody>
     </table>
-    <div v-if="copied" class="fixed bottom-4 right-4 bg-green-500 text-white p-2 rounded">
-      {{ message }}
-    </div>
+    <Transition name="message">
+        <div v-if="copied" class="fixed bottom-4 right-4 bg-green-500 text-white p-2 rounded">
+            {{ message }}
+        </div>
+    </Transition>
 </div>
 </template>
+
+<style scoped>
+
+::webkit-scrollbar {
+    width: 12px;
+}
+
+::webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+
+::webkit-scrollbar-thumb {
+    background-color: #888;
+}
+
+::webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+.message-enter-active, .message-leave-active {
+    transition: all 0.25s ease;
+}
+
+.message-enter-from, .message-leave-to {
+    opacity: 0;
+    transform: scale(1.1);
+}
+</style>

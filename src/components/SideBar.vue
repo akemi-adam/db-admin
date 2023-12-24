@@ -1,5 +1,5 @@
 <script setup lang="ts">
-    import { ref, defineProps } from 'vue'
+    import { ref } from 'vue'
     import DatabaseIcon from './DatabaseIcon.vue'
     import DatabaseOutlineIcon from './DatabaseOutlineIcon.vue'
 
